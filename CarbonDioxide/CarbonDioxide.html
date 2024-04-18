@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>新型城镇化和乡村振兴互动机制指标</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="wrap">
+		<div class="wid_1820">
+
+			<div class="header">
+				<p class="tmtext"></p>
+				<p>
+					<span class="hefont" style="font-size: 55px; font-weight: bolder;">评价指标及预测</span>
+				</p>
+
+			</div>
+
+			<div class="baner">
+				<h2><a class="jybt">指标知识图谱</a></h2>
+				<h2><a class="wbgl">城镇、乡村恩格尔系数</a></h2>
+				<h2><a class="kbbt">碳交易总值</a></h2>
+				<h2><a href="../DataBrowsing/China/China.html">可视化</a></h2>
+				<h2><a href="../Forecast/DataForecast.html">预测</a></h2>
+				<h2><a href="../frist/index.html">首页</a></h2>
+			</div>
+
+			<div class="content content1">
+				<p class="ctitle"></p>
+				<div class="cznl">
+
+					<!-- 关键代码 -->
+
+
+					<div id="pie1" class="echart_div pie1"></div>
+					<div id="pie2" class="echart_div pie2"></div>
+					<div class="piebt piebt1"></div>
+					<div class="piebt piebt2"></div>
+
+					<!-- 结构图模块 -->
+					<div id="guanxi" class="echart_div guanxi"></div>
+					<div class="gxlist tb">
+						<!-- <h3>政策法规</h3> -->
+						<h3>点击图片查看网络舆情图</h3>
+						<div><a href="WordCloud.html"><img src="img/舆情.png"></a></div>
+
+					</div>
+				</div>
+			</div>
+			<script src="./js/flexible.js"></script>
+			<!-- <script src="./js/echarts.min.js"></script> -->
+			<!-- <script src="js/jquery.js"></script> -->
+			<script src="./js/index.js"></script>
+			<script src="./js/china.js"></script>
+			<script src="./js/myMap.js"></script>
+			<script src="./js/OurMap.js"></script>
+			<script src="./js/control.js"></script>
+
+
+
+
+			<div class="jydt">
+
+				<!-- 统计图 -->
+				<div class="lins1" id="lins1"></div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>
+
+<script src="libs/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 发散图ecahrt -->
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/sanlian.js"></script>
+<script>
+
+	$(function () {
+		var titme1 = "";
+
+		$(".baner a").click(function () {
+
+			$(".baner a").removeClass("ahover");
+			$(".cznl>div").css("display", "none");
+			$(".cznl").css("display", "block");
+			var chartid = $(this).attr("class");
+
+			if (chartid === "jybt") {
+				$(".ctitle").html("新型城镇化与乡村振兴互动机制指标知识图谱");
+				$("#guanxi,.gxlist").css("display", "block");
+			}
+			else if (chartid === "wbgl") {
+				$(".jydt").css("display", "block");
+				var lins1 = echarts.init(document.getElementById('lins1'));
+				lins1.setOption(option1);
+				$(".ctitle").html("新型城镇化");
+			}
+
+			else if (chartid === "kbbt") {
+				$(".ctitle").html("新型城镇化");
+				$("#pie1,.piebt").css("display", "block");
+				$("#pie2,.piebt").css("display", "block");
+				var myChart2 = echarts.init(document.getElementById('pie1'));
+				var myChart3 = echarts.init(document.getElementById('pie2'));
+				myChart2.setOption(option2);
+				myChart3.setOption(option22);
+			}
+
+			$(this).addClass("ahover");
+
+
+		})
+		var address = window.location.href;
+		if (address.split("?")[1] == "1") {
+			$(".wbgl").click();
+			//window.location.href = "index.html";
+			var url = window.location.href;
+			url = url.split('?')[0];
+			window.history.pushState({}, 0, url);
+		}
+		else {
+			$(".baner .jybt").click();
+		}
+
+	})
+</script>
